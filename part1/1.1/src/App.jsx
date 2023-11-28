@@ -21,6 +21,27 @@ const Display = ({val, text}) => {
     </div>
   )
 }
+const Statistics = ({
+  good,
+  neutral,
+  bad,
+  all,
+  avg,
+  positve
+}) => {
+
+  return (
+    <dir>
+      <h2>statistics</h2>
+      <p>good {good}</p>
+      <p>neutral {neutral}</p>
+      <p>bad {bad}</p>
+      <p>all {all}</p>
+      <p>average {avg}</p>
+      <p>positive {positve}</p>
+    </dir>
+  )
+}
 
 const App = () => {
   const [good, setGood] = useState(0)
@@ -59,13 +80,14 @@ const App = () => {
       <Button f={incGood} text="good"/>
       <Button f={incNeutral} text="neutral"/>
       <Button f={incBad} text="bad"/>
-      <h2>statistics</h2>
-      <Display val={good} text="good" />
-      <Display val={neutral} text="neutral" />
-      <Display val={bad} text="bad" />
-      <Display val={avg} text="average" />
-      <Display val={all} text="all" />
-      <Display val={positve} text="positive" />
+      <Statistics 
+        good={good}
+        neutral={neutral}
+        bad={bad}
+        all={all}
+        avg={avg}
+        positve={positve}
+        />
     </div>
   )
 }
