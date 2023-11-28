@@ -4,9 +4,7 @@ import { useState } from 'react'
 const Button  = ({f, text}) => {
   return (
     <div>
-      <button
-        onClick={f}
-        >
+      <button onClick={f}>
           {text}
         </button>
     </div>
