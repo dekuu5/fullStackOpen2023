@@ -1,72 +1,51 @@
-/* eslint-disable react/prop-types */
+import { useState } from 'react'
 
-function Header(props){
 
+const Button  = ({f, text}) => {
   return (
     <div>
-      <h1>{props.course.name}</h1>
+      <button
+        onClick={f}
+        >
+          {text}
+        </button>
     </div>
   )
 }
 
-function Part(props){
+
+const Display = ({val, text}) => {
   return (
     <div>
-      <p>
-        {props.part} {props.exercises}
-      </p>
+      <p>{text} {val} </p>
     </div>
   )
 }
 
-function Content({ course: { parts }}) {
-  return (
-    <div>
-      {parts.map((item, index) => (
-        <div key={index}>
-          <Part part={item.name} exercises={item.exercises} />
-        </div>
-      ))}
-    </div>
-  )
-}
-function Total(props) {
-  let total = props.course.parts.reduce((a,b) => a +b.exercises, 0)
-  return (
-    <div>
-      <p>Number of exercises {total}</p>
-    </div>
-  )
-}
+const App = () => {
+  const [good, setGood] = useState(0)
+  const [neutral, setNeutral] = useState(0)
+  const [bad, setBad] = useState(0)
 
-function App (){
-  const course = {
-    name: 'Half Stack application development',
-    parts: [
-      {
-        name: 'Fundamentals of React',
-        exercises: 10
-      },
-      {
-        name: 'Using props to pass data',
-        exercises: 7
-      },
-      {
-        name: 'State of a component',
-        exercises: 14
-      }
-    ]
+  function incGood() {
+    setGood(good + 1)
   }
-
+  function incNeutral() {
+    setNeutral(neutral + 1)
+  }
+  function incBad() {
+    setBad(bad + 1)
+  }
   return (
     <div>
-      <Header course={course}/>
-      <Content 
-      course={course}
-       />
-      <Total 
-      course={course}
-      />
+      <h1>give feedback</h1>
+      <Button f={incGood} text="good"/>
+      <Button f={incNeutral} text="neutral"/>
+      <Button f={incBad} text="bad"/>
+      <h2>statistics</h2>
+      <Display val={good} text="good" />
+      <Display val={neutral} text="neutral" />
+      <Display val={bad} text="bad" />
     </div>
   )
 }
