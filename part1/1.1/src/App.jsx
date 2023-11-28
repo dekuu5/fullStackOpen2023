@@ -14,7 +14,7 @@ const Button  = ({f, text}) => {
 }
 
 
-const Display = ({val, text}) => {
+const StatisticLine = ({val, text}) => {
   return (
     <div>
       <p>{text} {val} </p>
@@ -31,15 +31,15 @@ const Statistics = ({
 }) => {
 
   return (
-    <dir>
+    <>
       <h2>statistics</h2>
-      <p>good {good}</p>
-      <p>neutral {neutral}</p>
-      <p>bad {bad}</p>
-      <p>all {all}</p>
-      <p>average {avg}</p>
-      <p>positive {positve}</p>
-    </dir>
+      <StatisticLine val={good} text="good" />
+      <StatisticLine val={neutral} text="neutral" />
+      <StatisticLine val={bad} text="bad" />
+      <StatisticLine val={avg} text="average" />
+      <StatisticLine val={all} text="all" />
+      <StatisticLine val={positve} text="positive" />
+    </>
   )
 }
 
@@ -80,14 +80,18 @@ const App = () => {
       <Button f={incGood} text="good"/>
       <Button f={incNeutral} text="neutral"/>
       <Button f={incBad} text="bad"/>
-      <Statistics 
+      {all? (<Statistics 
         good={good}
         neutral={neutral}
         bad={bad}
         all={all}
         avg={avg}
         positve={positve}
-        />
+        />) :
+        (<p>
+          no feedback given
+        </p>)}
+      
     </div>
   )
 }
