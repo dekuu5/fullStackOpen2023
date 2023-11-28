@@ -14,9 +14,14 @@ const Button  = ({f, text}) => {
 
 const StatisticLine = ({val, text}) => {
   return (
-    <div>
-      <p>{text} {val} </p>
-    </div>
+    <tr>
+      <td>
+        {text}
+      </td>
+      <td>
+        {val}
+      </td>
+    </tr>
   )
 }
 const Statistics = ({
@@ -31,12 +36,16 @@ const Statistics = ({
   return (
     <>
       <h2>statistics</h2>
-      <StatisticLine val={good} text="good" />
-      <StatisticLine val={neutral} text="neutral" />
-      <StatisticLine val={bad} text="bad" />
-      <StatisticLine val={avg} text="average" />
-      <StatisticLine val={all} text="all" />
-      <StatisticLine val={positve} text="positive" />
+      <table>
+        <tbody>
+          <StatisticLine val={good} text="good" />
+          <StatisticLine val={neutral} text="neutral" />
+          <StatisticLine val={bad} text="bad" />
+          <StatisticLine val={avg} text="average" />
+          <StatisticLine val={all} text="all" />
+          <StatisticLine val={positve + "%"} text="positive" />
+        </tbody>
+      </table>
     </>
   )
 }
